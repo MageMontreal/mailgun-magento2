@@ -77,7 +77,7 @@ class Config extends AbstractHelper
      */
     public function version()
     {
-        if ($this->endpoint() == 'api.mailgun.net') {
+        if (in_array($this->endpoint(), ['api.mailgun.net', 'api.eu.mailgun.net'])) {
             return 'v3';
         }
 
@@ -89,7 +89,7 @@ class Config extends AbstractHelper
      */
     public function ssl()
     {
-        return $this->endpoint() == 'api.mailgun.net' ? true : false;
+        return in_array($this->endpoint(), ['api.mailgun.net', 'api.eu.mailgun.net']);
     }
 
 }
